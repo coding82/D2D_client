@@ -1,16 +1,19 @@
-import React from 'react';
-import Routes from './components/router'
-import Navbar from './components/navbar'
+import React from "react";
+import { Navbar, Routes, Footer } from "./components/index";
+import "./App.css";
 
 class App extends React.Component {
-  render(){
-    return(
+  render() {
+    return (
       <div>
-      <Navbar/>
-      <Routes/>
+        <Navbar className="theHeader" />
+        <div className="theBody">
+          <Routes />
+        </div>
+        <Footer className="theFooter" />
       </div>
-    )
+    );
   }
 }
 
-export default App
+export default App;

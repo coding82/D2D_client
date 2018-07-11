@@ -1,5 +1,5 @@
 import React from "react";
-import { LoginForm } from "./index";
+import LoginForm from './loginForm';
 
 export default class Auth extends React.Component {
   constructor() {
@@ -31,7 +31,8 @@ export default class Auth extends React.Component {
   }
 
   handleSubmit() {
-    this.setState({ visitor: !this.state.visitor });
+    // this.setState({ visitor: !this.state.visitor });
+    window.location.assign('/you');
   }
 
   handleChange(event) {
@@ -39,33 +40,56 @@ export default class Auth extends React.Component {
   }
 
   render() {
+    let option = this.props.match.params.option;
     return (
       <div>
-        {
-          <div>
-            <button onClick={() => this.handleClick("login")}>Login</button>
-            <button onClick={() => this.handleClick("signup")}>Signup</button>
+        {option === "login" ? (
+          <div className="login">
+
+            <LoginForm />
+
           </div>
-        }
+        ) : option === "signup" ? (
+          <div className="signup">
 
-        {this.state.visitor ? (
-          <div>
-            <p>Please Log In or Sign Up</p>
-            {this.state.showForm === "login" && (
-              <LoginForm handleSubmit={this.handleSubmit} />
-            )}
+            <LoginForm showForm={true} />
 
-            {this.state.showForm === "signup" && (
-              <LoginForm showForm="signup" handleSubmit={this.handleSubmit} />
-            )}
           </div>
         ) : (
-          <div>
-          <p>Welcome to D2D</p>
-          <button onClick={this.handleSubmit} >Logout</button>
-          </div>
+          <div>nope</div>
         )}
       </div>
     );
   }
+
+  // render() {
+  //   return (
+  //     <div>
+  //       {
+  //         <div>
+  //           <button onClick={() => this.handleClick("login")}>Login</button>
+  //           <button onClick={() => this.handleClick("signup")}>Signup</button>
+  //         </div>
+  //       }
+
+  //       {this.state.visitor ? (
+  //         <div>
+  //           <p>Please Log In or Sign Up</p>
+  //           {this.state.showForm === "login" && (
+  //             <LoginForm handleSubmit={this.handleSubmit} />
+  //           )}
+
+  //           {this.state.showForm === "signup" && (
+  //             <LoginForm showForm="signup" handleSubmit={this.handleSubmit} />
+  //           )}
+  //         </div>
+  //       ) : (
+  //         <div>
+  //         <p>Welcome to D2D</p>
+  //         <button onClick={this.handleSubmit} >Logout</button>
+  //         </div>
+  //       )}
+  //     </div>
+  //   );
+  // }
 }

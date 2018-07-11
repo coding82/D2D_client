@@ -1,4 +1,5 @@
 import React from "react";
+import { Link} from 'react-dom';
 
 export default class LoginForm extends React.Component {
   constructor() {
@@ -16,7 +17,7 @@ export default class LoginForm extends React.Component {
 
   handleClick(event) {
     event.preventDefault();
-    this.props.handleSubmit()
+    window.location.assign('/you')
   }
 
   handleChange(event) {
